@@ -1,0 +1,167 @@
+Will the following code compile successfully? If yes, what will be the output of program?
+
+public abstract class A {
+    abstract void m1(A a);
+}
+public class B extends A {
+  void m1(A a) {
+     System.out.println("One"); 	
+  }
+}
+public class C extends B {
+  void m1(B b) {	
+     System.out.println("Two");
+     super.m1(new B());
+  }
+}
+public class Test {
+public static void main(String[] args) {
+   C c = new C();
+   c.m1(new B());//B b = new B();
+  }
+}
+
+-----------------------------------------------------------------------------------
+Will the code compile successfully? If yes, what will be the output?
+
+public abstract class A {
+   abstract void m1();	
+}
+public class B extends A {
+  void m1(){
+     System.out.println("m1 in class B");
+  }
+}
+public class Test {
+public static void main(String[] args) {
+   B b = new B();
+   b.m1();
+  }
+}
+----------------------------------------------------------------------------------------------
+
+Consider the below given code.
+
+public abstract class A {
+   abstract void m1();
+   void m2(){
+      System.out.println("One”);	
+   }
+}
+How to call m2() method in the above code?
+--------------------------------------------------------------------------------------------------
+
+Identify the errors in the following code.
+
+public abstract class A {
+    abstract void m1();
+    void m2(){
+       System.out.println("One");	
+    }
+}
+public class B extends A {
+   void m2(){
+      System.out.println("Two");
+   }
+}
+public class Test {
+public static void main(String[] args) {
+   B b = new B();
+   b.m2();
+  }
+}
+-----------------------------------------------------------------------------------------------
+
+Will the below code compiled successfully? If yes, what will be the output of the program?
+
+public abstract class A {
+   abstract void m1();
+   abstract void m2();
+}
+public class B extends A {
+   void m1(){
+      System.out.println("One");	 
+   }
+   void m2(){
+      System.out.println("Two");	 
+   }
+   void m3() {
+      System.out.println("Three");	 
+   }
+}
+public class Test {
+public static void main(String[] args) {
+   A a = new B();
+   a.m1();
+   a.m2();
+   a.m3();
+  }
+}
+
+------------------------------------------------------------------------------------------------
+Will the below code be compiled successfully? If yes, what will be the output of the following program?
+public abstract class A {	
+   abstract void m1();
+   A() { 
+      System.out.println("Hello"); 
+   }
+   static void m2() {
+      System.out.println("Hello Java!"); 
+   }
+}
+public class B extends A {
+   void m1(){
+      A.m2(); 
+   }
+}
+public class Test {
+public static void main(String[] args) {
+   B b = new B();
+   b.m1();
+ }
+}
+
+--------------------------------------------------------------------------------------------------
+
+What will be the output of the below program?
+
+public abstract class A {
+   private int x;
+   A(int x){
+      System.out.println("Value of x: " +x);	
+   }
+   abstract void m1(int x, double y);
+}
+public class B extends A {
+   private int y;	
+   B(int y){
+      super(10);	
+      System.out.println("Value of y: " +y);
+   }
+   void m1(int x, double y){
+       System.out.println("One");
+   }
+   void m2(){
+      System.out.println("Two"); 
+      this.m1(5, 10.50);
+   }
+}
+public class C extends B {
+  C(){
+    super(30);	 
+  }
+  void m1(int x, double y){
+      super.m1(10, 15.15);
+      System.out.println("Three"); 
+  }
+}
+public class Test {
+public static void main(String[] args){
+   B b = new C();	
+   b.m1(10, 20.50);
+   b.m2();
+  }
+}
+
+
+
